@@ -3,6 +3,7 @@ import { Box } from "@mui/system";
 import { useFormik } from "formik";
 import { CONFIG_TYPE, LOGIN_AUTH_PROPS } from "@/model";
 import { CustomButton, RecursiveContainer } from "@/components";
+import { authSchema } from "@/schema";
 
 const LoginPageWrapper = styled(Grid)`
   width: 100vw;
@@ -54,6 +55,7 @@ export const LoginContent: React.FC = () => {
       password: "",
     },
     onSubmit: handleSubmit,
+    validationSchema: authSchema,
   });
 
   const fields: CONFIG_TYPE = [
@@ -73,9 +75,17 @@ export const LoginContent: React.FC = () => {
     <LoginPageWrapper container>
       <LoginCardWrapper>
         <Box className="image" />
-        <Box className="login-form">
+        <Box
+          component="form"
+          onSubmit={formik.handleSubmit}
+          className="login-form"
+        >
           <Typography variant="h4">Welcome</Typography>
-          <RecursiveContainer config={fields} formik={formik} />
+          <RecursiveContainer
+            config={fields}
+            formik={formik}
+            validationSchema={authSchema}
+          />
           <CustomButton
             fullWidth
             type="submit"

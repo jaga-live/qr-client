@@ -1,5 +1,5 @@
 {
-  "name": "next-js-practice",
+  "name": "next-js-boilerplate-typescript-version-2",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -30,7 +30,8 @@
     "react-number-format": "^4.9.1",
     "react-redux": "^7.2.6",
     "sass": "^1.47.0",
-    "uniqid": "^5.4.0"
+    "uniqid": "^5.4.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/node": "17.0.4",

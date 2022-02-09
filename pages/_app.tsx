@@ -9,6 +9,8 @@ import { ThemeProvider } from "@/theme";
 import "@/assets/scss/global.scss";
 import { createEventEmitters } from "@/utils";
 import { useRouter } from "next/router";
+import { SnackbarProvider } from "notistack";
+import { FlashMessage } from "@/components";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -31,7 +33,16 @@ function MyApp({ Component, pageProps }: MyAppProps) {
   return (
     <StoreProvider store={store}>
       <ThemeProvider>
-        <AuthProvider>{getLayout(<Component {...pageProps} />)}</AuthProvider>
+        <SnackbarProvider
+          maxSnack={6}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "right",
+          }}
+        >
+          <FlashMessage />
+          <AuthProvider>{getLayout(<Component {...pageProps} />)}</AuthProvider>
+        </SnackbarProvider>
       </ThemeProvider>
     </StoreProvider>
   );
