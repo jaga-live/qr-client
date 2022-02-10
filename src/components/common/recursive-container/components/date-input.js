@@ -15,12 +15,28 @@ export const DateInput = (props) => {
 
   if (renderInput) {
     if (renderInput.props)
-      renderInput = (params) => (
+      renderInput = function renderInput(params) {
+        return (
+          <TextField
+            fullWidth
+            variant="outlined"
+            className={props.className}
+            {...renderInput.props}
+            {...params}
+            {...rest}
+            my={props.my}
+            helperText={helperText}
+            error={error}
+          />
+        );
+      };
+  } else {
+    renderInput = function renderInput(params) {
+      return (
         <TextField
           fullWidth
           variant="outlined"
           className={props.className}
-          {...renderInput.props}
           {...params}
           {...rest}
           my={props.my}
@@ -28,19 +44,7 @@ export const DateInput = (props) => {
           error={error}
         />
       );
-  } else {
-    renderInput = (params) => (
-      <TextField
-        fullWidth
-        variant="outlined"
-        className={props.className}
-        {...params}
-        {...rest}
-        my={props.my}
-        helperText={helperText}
-        error={error}
-      />
-    );
+    };
   }
 
   const getValue = () => {
