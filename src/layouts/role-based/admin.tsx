@@ -11,7 +11,9 @@ export const AdminLayout: React.FC = (props) => {
   const { logout } = useAuth();
 
   const handleLogout = async () => {
-    await logout();
+    try {
+      await logout();
+    } catch {}
     router.push(authSetup.authPage);
   };
 

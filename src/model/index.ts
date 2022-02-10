@@ -17,6 +17,9 @@ import type { FormGroupProps } from "@mui/material/FormGroup";
 import type { DatePickerProps } from "@mui/lab/DatePicker/DatePicker";
 import type { DateTimePickerProps } from "@mui/lab/DateTimePicker/DateTimePicker";
 import type { TimePickerProps } from "@mui/lab/TimePicker/TimePicker";
+import type { TableCellProps } from "@mui/material/TableCell";
+import type { TypographyProps } from "@mui/material/Typography";
+import type { CardProps } from "@mui/material/Card";
 
 // notistack
 import type {
@@ -40,12 +43,14 @@ import type { NumberFormatProps } from "react-number-format";
 // redux
 
 // auth
+// #rbac-setup
+export type ROLE = "admin" | "employee";
 export interface AUTH_DATA {
   name: string;
   email: string;
   token: string;
   // #rbac-setup
-  roles: Array<string>;
+  role: ROLE;
 }
 
 export interface AUTH_STATE {
@@ -73,6 +78,70 @@ export interface SIDEBAR_CONTEXT {
 }
 
 // components
+
+// custom-table
+
+type singleDataObject<T = {}> = { [key: string]: any } & T;
+
+export type CUSTOM_TABLE_HEADING_PROPS = {
+  isRowsSelected: boolean;
+  selectedRows: CUSTOM_TABLE_PROPS["data"];
+  isSelectable: boolean;
+};
+
+export interface CUSTOM_TABLE_PROPS {
+  idAccessor?: string;
+  data: Array<singleDataObject>;
+  tableHeading?: React.FC<CUSTOM_TABLE_HEADING_PROPS> | string;
+  tableHeadingProps?: any;
+  isSelectable?: boolean;
+  emptyMessage?: JSX.Element | string | null;
+  columns: Array<{
+    Header: JSX.Element | string | null;
+    accessor: string;
+    headerCellProps?: TableCellProps;
+    bodyCellProps?: TableCellProps;
+  }>;
+  renderAs?: {
+    [key: string]: React.FC<{
+      value: any;
+      Component: React.FC<TableCellProps>;
+    }>;
+  } | null;
+  loading?: boolean;
+}
+
+export interface TABLE_HEADER_PROPS extends BoxProps {
+  header?:
+    | JSX.Element
+    | string
+    | null
+    | {
+        title: string | React.FC | JSX.Element;
+        props?: TypographyProps & { [key: string]: any };
+        containerProps?: BoxProps;
+        description?:
+          | JSX.Element
+          | string
+          | null
+          | { title: string; props?: TypographyProps };
+      };
+  actions?: JSX.Element | string | null;
+}
+
+// custom-card
+
+export interface CUSTOM_CARD_HEADER_PROPS extends TABLE_HEADER_PROPS {
+  headerInsideCard?: boolean;
+}
+
+export interface CUSTOM_CARD_PROPS extends CardProps {
+  cardHeader?: CUSTOM_CARD_HEADER_PROPS | null;
+  loading?: boolean;
+  containerProps?: BoxProps;
+  cardBodyProps?: BoxProps;
+}
+
 // custom-icon-button props
 interface TransitionOptions {
   shallow?: boolean;
@@ -609,6 +678,27 @@ export interface LOGIN_AUTH_PROPS {
   email: string;
   password: string;
 }
+
+// ---------------------------------------------------------------------------- //
+
+// employees
+export type EMPLOYEE_DETAILS = {
+  name: string;
+  email: string;
+  password: string;
+  _id: string;
+  phone: string;
+  role: ROLE;
+};
+export type ADD_EMPLOYEE = {
+  name: string;
+  email: string;
+  password: string;
+  phone: string;
+  role: ROLE;
+};
+export type EDIT_EMPLOYEE = Partial<EMPLOYEE_DETAILS>;
+export type EMPLOYEES = EMPLOYEE_DETAILS[];
 
 // custom-models
 export * from "./custom-models";

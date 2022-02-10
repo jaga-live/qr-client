@@ -4,6 +4,10 @@ import { useFormik } from "formik";
 import { CONFIG_TYPE, LOGIN_AUTH_PROPS } from "@/model";
 import { CustomButton, RecursiveContainer } from "@/components";
 import { authSchema } from "@/schema";
+import { useAuth, useRefMounted } from "@/hooks";
+import { getError } from "@/utils";
+import { useState } from "react";
+import { useRouter } from "next/router";
 
 const LoginPageWrapper = styled(Grid)`
   width: 100vw;
@@ -45,8 +49,35 @@ const LoginCardWrapper = styled(Card)(
 );
 
 export const LoginContent: React.FC = () => {
+  const { login } = useAuth();
+  const [loggingIn, setLoggingIn] = useState(false);
+  const router = useRouter();
+  const isMountedRef = useRefMounted();
+
+  // const handleLogin = () => {
+  //   console.log("Logged in");
+  //   setCookie("token", "test-token");
+  //   authActions.login({
+  //     email: "admin@mailinator.com",
+  //     name: "Admin",
+  //     token: "test-token",
+  //     role: "admin",
+  //   });
+  //   router.push(`/${router.query.backToURL || "admin"}`);
+  // };
   const handleSubmit = async (data: LOGIN_AUTH_PROPS) => {
     console.log(data);
+    setLoggingIn(true);
+    try {
+      const { role } = await login(data);
+      if (isMountedRef()) {
+        const backTo = (router.query.backTo as string) || `/${role}`;
+        router.push(backTo);
+      }
+    } catch (err) {
+      window.flash({ message: getError(err).message, variant: "error" });
+    }
+    setLoggingIn(false);
   };
 
   const formik = useFormik({
@@ -54,6 +85,7 @@ export const LoginContent: React.FC = () => {
       email: "",
       password: "",
     },
+    // onSubmit: handleLogin,
     onSubmit: handleSubmit,
     validationSchema: authSchema,
   });
@@ -88,6 +120,7 @@ export const LoginContent: React.FC = () => {
           />
           <CustomButton
             fullWidth
+            loading={loggingIn}
             type="submit"
             sx={{ borderRadius: "3px", mt: 1 }}
           >

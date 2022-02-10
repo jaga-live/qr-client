@@ -1,7 +1,7 @@
 import { adminRoutes } from "./admin";
-import { superadminRoutes } from "./superadmin";
+import { employeeRoutes } from "./employee";
 
 export const routes = {
   admin: adminRoutes,
-  superadmin: superadminRoutes,
+  employee: employeeRoutes,
 };

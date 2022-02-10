@@ -7,10 +7,10 @@ export const authSetup = {
 
 // #rbac-setup
 export const rbacSetup = {
-  roles: ["admin", "superadmin"],
+  roles: ["admin", "user"],
   homePage: {
     admin: "/admin",
-    superadmin: "/superadmin",
+    user: "/user",
   },
   publicRoutes: ["/verification"],
   authRoutes: ["/auth", "/auth/login"], // pages that are used for authentication purposes

@@ -5,13 +5,15 @@ import { HEADER_PROPS } from "@/model";
 import { routes } from "@/routes";
 import { useRouter } from "next/router";
 
-export const SuperadminLayout: React.FC = (props) => {
+export const EmployeeLayout: React.FC = (props) => {
   const { children } = props;
   const router = useRouter();
   const { logout } = useAuth();
 
   const handleLogout = async () => {
-    await logout();
+    try {
+      await logout();
+    } catch {}
     router.push(authSetup.authPage);
   };
 
@@ -24,7 +26,7 @@ export const SuperadminLayout: React.FC = (props) => {
       actions: [
         {
           label: "Profile",
-          href: "/superadmin/profile",
+          href: "/user/profile",
         },
       ],
       logout: handleLogout,
@@ -34,7 +36,7 @@ export const SuperadminLayout: React.FC = (props) => {
   return (
     <ExtendedSidebarLayout
       headerProps={headerProps}
-      sidebarRoutes={routes.superadmin}
+      sidebarRoutes={routes.employee}
     >
       {children}
     </ExtendedSidebarLayout>

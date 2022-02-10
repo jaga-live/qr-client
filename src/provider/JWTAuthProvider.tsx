@@ -12,9 +12,9 @@ export const JWTAuthProvider: React.FC = (props) => {
     const initializeApp = async () => {
       try {
         await initialize();
-        window.flash({ message: "Authentication successfull" });
+        // window.flash({ message: "Authentication successfull" });
       } catch (err) {
-        window.flash({ message: getError(err).message, variant: "error" });
+        // window.flash({ message: getError(err).message, variant: "error" });
       }
     };
     initializeApp();

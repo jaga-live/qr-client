@@ -35,7 +35,7 @@ export const getError = (errorObject: Error | AxiosError) => {
 
 // creating axios instance
 export const axiosInstance = axios.create({
-  baseURL: "https://dev.api.soutrali.ci/v1",
+  baseURL: "http://65.0.99.209:5000/v1",
 });
 
 // setting token in header for each request

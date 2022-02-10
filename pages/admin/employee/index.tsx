@@ -1,22 +1,21 @@
-import { AdminDashboard } from "@/content/admin";
+import { ViewEmployeesContent } from "@/content/admin";
 import { Authenticated } from "@/guard";
 import { AdminLayout } from "@/layouts";
 import { NextPage } from "next";
 import Head from "next/head";
 
-const AdminHome: NextPage = (props) => {
+const ViewEmployees: NextPage = (props) => {
   return (
     <>
-      <Head>Dashboard</Head>
-      <AdminDashboard />
+      <Head>View Employees</Head> <ViewEmployeesContent />
     </>
   );
 };
 
-AdminHome.getLayout = (page) => (
+ViewEmployees.getLayout = (page) => (
   <Authenticated roles={["admin"]}>
     <AdminLayout>{page}</AdminLayout>
   </Authenticated>
 );
 
-export default AdminHome;
+export default ViewEmployees;

@@ -16,6 +16,8 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import { CUSTOM_BUTTON_PROPS } from "@/model";
 import LockOpenOutlined from "@mui/icons-material/LockOpenOutlined";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import { useRouter } from "next/router";
 
 const StyledHeader = styled(Box)(
   ({ theme }) => `
@@ -76,6 +78,7 @@ const ToggleSidebar = styled((props: CUSTOM_ICON_BUTTON_PROPS) => (
 
 export const Header: React.FC<HEADER_PROPS> = (props) => {
   const { isOpen, toggleSidebar } = useContext(SidebarContext);
+  const { back } = useRouter();
 
   const { avatar = {} } = props;
 
@@ -90,7 +93,10 @@ export const Header: React.FC<HEADER_PROPS> = (props) => {
           padding: "0 10px",
         }}
       >
-        <Typography variant="h3">My Boiler Plate</Typography>
+        {/* <Typography variant="h3">My Boiler Plate</Typography> */}
+        <CustomButton onClick={back} startIcon={<ChevronLeftIcon />}>
+          Back
+        </CustomButton>
         <Stack direction="row">
           <CustomPopover
             closeOnClick={false}
