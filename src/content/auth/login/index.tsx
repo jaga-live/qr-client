@@ -4,8 +4,8 @@ import { useFormik } from "formik";
 import { CONFIG_TYPE, LOGIN_AUTH_PROPS } from "@/model";
 import { CustomButton, RecursiveContainer } from "@/components";
 import { authSchema } from "@/schema";
-import { useAuth, useRefMounted } from "@/hooks";
-import { getError } from "@/utils";
+import { useActions, useAuth, useRefMounted } from "@/hooks";
+import { getError, setCookie } from "@/utils";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
@@ -53,6 +53,7 @@ export const LoginContent: React.FC = () => {
   const [loggingIn, setLoggingIn] = useState(false);
   const router = useRouter();
   const isMountedRef = useRefMounted();
+  const { auth: authActions } = useActions();
 
   // const handleLogin = () => {
   //   console.log("Logged in");

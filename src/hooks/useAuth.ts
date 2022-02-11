@@ -51,6 +51,7 @@ export function useAuth() {
         if (updateRedux) authActions.logout();
         resolve();
       } catch (err) {
+        if (updateRedux) authActions.logout();
         reject(err);
       }
     });

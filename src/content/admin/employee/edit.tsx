@@ -31,7 +31,7 @@ export const EditEmployeeContent: React.FC = () => {
   const handleSubmit = async (data) => {
     setSubmitting(true);
     try {
-      await userApi.editEmployee(data);
+      await userApi.editEmployee({ ...data, _id });
       window.flash({ message: "Updated Successfully" });
       push("/admin/employee");
     } catch (err) {

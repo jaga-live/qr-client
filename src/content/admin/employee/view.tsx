@@ -9,7 +9,18 @@ import { userApi } from "@/api";
 
 export const ViewEmployeesContent: React.FC = () => {
   const [loading, setLoading] = useState(false);
-  const [employees, setEmployees] = useState([]);
+  const [employees, setEmployees] = useState([
+    // {
+    //   name: "John",
+    //   email: "john@mailinator.com",
+    //   phone: "+91 9994959032",
+    // },
+    // {
+    //   name: "Steve",
+    //   email: "steve@mailinator.com",
+    //   phone: "+91 96004959032",
+    // },
+  ]);
 
   useEffect(() => {
     fetchEmployees();

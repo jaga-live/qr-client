@@ -8,7 +8,7 @@ import { Public } from "@/guard";
 import { ThemeProvider } from "@/theme";
 import "@/assets/scss/global.scss";
 import { createEventEmitters } from "@/utils";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import { SnackbarProvider } from "notistack";
 import { FlashMessage } from "@/components";
 
@@ -23,12 +23,10 @@ interface MyAppProps extends AppProps {
 
 function MyApp({ Component, pageProps }: MyAppProps) {
   const getLayout = Component.getLayout ?? ((page) => <Public>{page}</Public>);
-  const { isReady } = useRouter();
+  // const { isReady } = useRouter();
 
-  useEffect(() => {
-    if (isReady) return;
-    createEventEmitters();
-  }, [isReady]);
+  // invoke all eventEmitter
+  useEffect(() => createEventEmitters(), []);
 
   return (
     <StoreProvider store={store}>
