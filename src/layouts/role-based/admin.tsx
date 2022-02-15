@@ -19,8 +19,8 @@ export const AdminLayout: React.FC = (props) => {
 
   const headerProps: HEADER_PROPS = {
     avatar: {
-      image:
-        "https://cdn.discordapp.com/avatars/692038003476135977/4d2acd3aab7d3dffebacae5726d2e905.webp?size=160",
+      image: null,
+      // "https://cdn.discordapp.com/avatars/692038003476135977/4d2acd3aab7d3dffebacae5726d2e905.webp?size=160",
       email: "sasuke_uchiha@konoha.com",
       name: "Sasuke Uchiha",
       actions: [

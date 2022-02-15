@@ -19,11 +19,14 @@ const LayoutContainer = styled(Box)(
     }
   `
 );
-const MainContainer = styled(Box)`
+const MainContainer = styled(Box)(
+  ({ theme }) => `
   width: 100%;
   height: 100vh;
   overflow: hidden;
-`;
+  background: ${theme.palette.background.default}
+`
+);
 
 const ContentContainer = styled(Box)(
   ({ theme }) => `
