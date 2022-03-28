@@ -3,10 +3,21 @@ import {
   EDIT_EMPLOYEE,
   EMPLOYEES,
   EMPLOYEE_DETAILS,
+  USER_PROFILE,
 } from "@/model";
 import { axiosInstance } from "@/utils";
 
 class UserApi {
+  fetchProfile(): Promise<USER_PROFILE> {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const { data } = await axiosInstance.get("/user/profile");
+        resolve(data);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
   fetchEmployees(): Promise<EMPLOYEES> {
     return new Promise(async (resolve, reject) => {
       try {

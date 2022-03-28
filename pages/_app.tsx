@@ -10,7 +10,7 @@ import "@/assets/scss/global.scss";
 import { createEventEmitters } from "@/utils";
 // import { useRouter } from "next/router";
 import { SnackbarProvider } from "notistack";
-import { FlashMessage } from "@/components";
+import { CustomModal, FlashMessage } from "@/components";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -39,6 +39,7 @@ function MyApp({ Component, pageProps }: MyAppProps) {
           }}
         >
           <FlashMessage />
+          <CustomModal />
           <AuthProvider>{getLayout(<Component {...pageProps} />)}</AuthProvider>
         </SnackbarProvider>
       </ThemeProvider>

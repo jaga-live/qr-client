@@ -23,7 +23,8 @@ export const Authenticated: React.FC<{
       });
     else {
       // if the user's role doesn't match, then redirect user to 404 page
-      if (roles && !roles.includes(data.role)) router.replace("/404");
+      if (roles && data.roles && !roles.includes(data.roles[0]))
+        router.replace("/404");
       else setVerified(true);
     }
   }, [router.isReady]);

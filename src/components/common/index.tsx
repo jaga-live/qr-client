@@ -9,3 +9,5 @@ export * from "./flash-message";
 export * from "./custom-table";
 export * from "./spinners";
 export * from "./refresh-icon";
+export * from "./custom-modal";
+export * from "./confirmation-modal";

@@ -1,5 +1,5 @@
 {
-  "name": "next-js-boilerplate-typescript-version-2",
+  "name": "qr-client",
   "private": true,
   "scripts": {
     "dev": "next dev",

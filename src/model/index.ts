@@ -45,12 +45,14 @@ import type { NumberFormatProps } from "react-number-format";
 // auth
 // #rbac-setup
 export type ROLE = "admin" | "employee";
-export interface AUTH_DATA {
+export type ROLES = ["admin", "employee"];
+export interface AUTH_DATA<T = "admin"> {
   name: string;
   email: string;
   token: string;
   // #rbac-setup
-  role: ROLE;
+  roles: ROLES;
+  profile?: USER_PROFILE<T> | null;
 }
 
 export interface AUTH_STATE {
@@ -67,6 +69,12 @@ export interface INITIALIZE_ACTION {
 export interface LOGIN_DATA {
   email: string;
   password: string;
+}
+
+export interface USER_PROFILE<T = "admin"> {
+  name: string;
+  email: string;
+  image?: string | null;
 }
 
 // contexts

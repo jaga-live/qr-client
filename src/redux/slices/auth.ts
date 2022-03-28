@@ -1,5 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AUTH_DATA, AUTH_STATE, INITIALIZE_ACTION } from "@/model";
+import {
+  AUTH_DATA,
+  AUTH_STATE,
+  INITIALIZE_ACTION,
+  USER_PROFILE,
+} from "@/model";
 
 const initialState: AUTH_STATE = {
   isAuthenticated: false,
@@ -26,6 +31,13 @@ const slice = createSlice({
       ..._state,
       isAuthenticated: true,
       data: action.payload,
+    }),
+    setProfile: <T = undefined>(
+      _state: AUTH_STATE,
+      action: PayloadAction<AUTH_DATA<T>["profile"]>
+    ): AUTH_STATE => ({
+      ..._state,
+      data: { ..._state.data, profile: action.payload },
     }),
     logout: (_state: AUTH_STATE, _action: PayloadAction<void>): AUTH_STATE => ({
       ...initialState,
