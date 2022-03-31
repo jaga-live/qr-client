@@ -70,9 +70,9 @@ export const LoginContent: React.FC = () => {
     console.log(data);
     setLoggingIn(true);
     try {
-      const { role } = await login(data);
+      const { roles } = await login(data);
       if (isMountedRef()) {
-        const backTo = (router.query.backTo as string) || `/${role}`;
+        const backTo = (router.query.backTo as string) || `/${roles[0]}`;
         router.push(backTo);
       }
     } catch (err) {
@@ -119,12 +119,7 @@ export const LoginContent: React.FC = () => {
             formik={formik}
             validationSchema={authSchema}
           />
-          <CustomButton
-            fullWidth
-            loading={loggingIn}
-            type="submit"
-            sx={{ borderRadius: "3px", mt: 1 }}
-          >
+          <CustomButton fullWidth loading={loggingIn} type="submit">
             Login
           </CustomButton>
         </Box>

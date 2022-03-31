@@ -457,14 +457,32 @@ export const PureLightTheme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
+          borderRadius: 2,
+          padding: 0,
           "& .MuiInputAdornment-positionEnd.MuiInputAdornment-outlined": {
-            paddingRight: 6,
+            paddingRight: 12,
+          },
+          "& .MuiInputAdornment-outlined button": {
+            padding: 5,
+            borderRadius: 0,
+          },
+          "& .MuiOutlinedInput-input": {
+            padding: "8px 15px",
           },
           "&:hover .MuiOutlinedInput-notchedOutline": {
             borderColor: colors.alpha.black[50],
           },
           "&.Mui-focused:hover .MuiOutlinedInput-notchedOutline": {
             borderColor: colors.primary.main,
+          },
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          "&.MuiInputLabel-outlined": {
+            top: -6,
           },
         },
       },
@@ -598,6 +616,8 @@ export const PureLightTheme = createTheme({
           textTransform: "none",
           paddingLeft: 16,
           paddingRight: 16,
+          borderRadius: 2,
+          margin: "2px 0",
 
           ".MuiSvgIcon-root": {
             transition: "all .2s",
@@ -646,7 +666,7 @@ export const PureLightTheme = createTheme({
       },
       styleOverrides: {
         root: {
-          borderRadius: 6,
+          borderRadius: 2,
         },
       },
     },
@@ -670,11 +690,11 @@ export const PureLightTheme = createTheme({
     MuiIconButton: {
       styleOverrides: {
         root: {
-          borderRadius: 8,
+          borderRadius: 4,
           padding: 8,
 
           "& .MuiTouchRipple-root": {
-            borderRadius: 8,
+            borderRadius: 4,
           },
         },
         sizeSmall: {
@@ -811,7 +831,7 @@ export const PureLightTheme = createTheme({
           padding: "12px",
 
           "& .MuiListItem-button": {
-            borderRadius: 6,
+            borderRadius: 2,
             margin: "1px 0",
           },
         },
@@ -1166,8 +1186,7 @@ export const PureLightTheme = createTheme({
     borderRadius: 10,
   },
   typography: {
-    fontFamily:
-      '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"',
+    fontFamily: "'Open Sans', sans-serif",
     h1: {
       fontWeight: 700,
       fontSize: 35,
