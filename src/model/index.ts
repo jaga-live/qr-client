@@ -708,5 +708,16 @@ export type ADD_EMPLOYEE = {
 export type EDIT_EMPLOYEE = Partial<EMPLOYEE_DETAILS>;
 export type EMPLOYEES = EMPLOYEE_DETAILS[];
 
+// place
+export type PLACE_DETAILS = {
+  name: string;
+  _id: string;
+};
+export type ADD_PLACE = {
+  name: string;
+};
+export type EDIT_PLACE = Partial<PLACE_DETAILS>;
+export type PLACES = PLACE_DETAILS[];
+
 // custom-models
 export * from "./custom-models";
