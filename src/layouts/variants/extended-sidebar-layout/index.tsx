@@ -34,6 +34,7 @@ const ContentContainer = styled(Box)(
   position: relative;
   height: calc(100vh - ${theme.header.height});
   max-height: calc(100vh - ${theme.header.height});
+  overflow: auto;
 
   // margin approach
   // ${theme.breakpoints.up("lg")} {
@@ -52,7 +53,7 @@ export const ExtendedSidebarLayout: React.FC<EXTENDED_SIDEBAR_LAYOUT_PROPS> = (
     <SidebarProvider>
       <LayoutContainer>
         <Sidebar routes={props.sidebarRoutes} />
-        <MainContainer>
+        <MainContainer id="content-container">
           <Header {...props.headerProps} />
           <ContentContainer>{children}</ContentContainer>
         </MainContainer>

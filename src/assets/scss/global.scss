@@ -5,6 +5,10 @@ body {
   margin: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .skeleton-box {
   display: inline-block;
   height: 1em;
