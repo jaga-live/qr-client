@@ -53,19 +53,7 @@ export const LoginContent: React.FC = () => {
   const [loggingIn, setLoggingIn] = useState(false);
   const router = useRouter();
   const isMountedRef = useRefMounted();
-  const { auth: authActions } = useActions();
 
-  // const handleLogin = () => {
-  //   console.log("Logged in");
-  //   setCookie("token", "test-token");
-  //   authActions.login({
-  //     email: "admin@mailinator.com",
-  //     name: "Admin",
-  //     token: "test-token",
-  //     role: "admin",
-  //   });
-  //   router.push(`/${router.query.backToURL || "admin"}`);
-  // };
   const handleSubmit = async (data: LOGIN_AUTH_PROPS) => {
     console.log(data);
     setLoggingIn(true);

@@ -30,9 +30,9 @@ export const EmployeeLayout: React.FC = (props) => {
 
   const headerProps: HEADER_PROPS = {
     avatar: {
-      image: data.profile?.image,
-      email: data.profile?.email,
-      name: data.profile?.name,
+      image: data?.profile?.image,
+      email: data?.profile?.email,
+      name: data?.profile?.name,
       actions: [
         {
           label: "Profile",

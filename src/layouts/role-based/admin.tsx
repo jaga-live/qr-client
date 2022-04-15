@@ -30,10 +30,10 @@ export const AdminLayout: React.FC = (props) => {
 
   const headerProps: HEADER_PROPS = {
     avatar: {
-      image: data.profile?.image,
+      image: data?.profile?.image,
       // "https://cdn.discordapp.com/avatars/692038003476135977/4d2acd3aab7d3dffebacae5726d2e905.webp?size=160",
-      email: data.profile?.email,
-      name: data.profile?.name,
+      email: data?.profile?.email,
+      name: data?.profile?.name,
       actions: [
         {
           label: "Profile",
